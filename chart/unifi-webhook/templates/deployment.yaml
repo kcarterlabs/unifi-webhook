@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "unifi-webhook.fullname" . }}
+  labels:
+    app: {{ include "unifi-webhook.name" . }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ include "unifi-webhook.name" . }}
+  template:
+    metadata:
+      labels:
+        app: {{ include "unifi-webhook.name" . }}
+    spec:
+      containers:
+        - name: unifi-webhook
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          ports:
+            - containerPort: 5000
+          env:
+            - name: DISCORD_WEBHOOK_URL
+              value: "{{ .Values.env.discordWebhook }}"
+

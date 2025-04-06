@@ -1,0 +1,16 @@
+replicaCount: 1
+
+image:
+  repository: your-dockerhub-username/unifi-webhook
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 5000
+
+env:
+  discordWebhook: "https://discord.com/api/webhooks/YOUR_WEBHOOK_URL"
+
+resources: {}
+
