@@ -3,7 +3,7 @@ import requests
 
 app = Flask(__name__)
 
-DISCORD_WEBHOOK_URL = "https://discord.com/api/webhooks/1342718020228747284/-sBqHzMRKVEQAlyc0VYM9xfO4CaAK8f0SZTriKk4xTpFUOSDtT1kNYufhBO1qesnBztY"
+DISCORD_WEBHOOK_URL = "need a new webhook url you dummy"
 
 @app.route("/unifi-webhook", methods=["POST"])
 def unifi_webhook():
