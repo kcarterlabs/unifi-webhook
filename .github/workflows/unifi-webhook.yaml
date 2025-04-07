@@ -1,0 +1,33 @@
+name: Run UniFi Webhook App
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:  # optional: allows you to trigger it manually from the GitHub UI
+
+jobs:
+  run-app:
+    runs-on: ubuntu-latest
+    env:
+      DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Build and run Docker container
+        run: |
+          docker build -t unifi-webhook .
+          docker run -d --rm \
+            -e DISCORD_WEBHOOK_URL=${{ secrets.DISCORD_WEBHOOK_URL }} \
+            -p 5000:5000 \
+            --name unifi-webhook \
+            unifi-webhook
