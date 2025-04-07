@@ -4,7 +4,8 @@ import os
 
 app = Flask(__name__)
 
-DISCORD_WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK")  # Set this as a secret/env var
+# DISCORD_WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK")  # Set this as a secret/env var
+DISCORD_WEBHOOK_URL="https://discord.com/api/webhooks/1358838395912060998/rWwAdjG-VO9wZNGL5ljzR1fHeH-e-rX1JQANit9EAdnj6tWV602W7oeTs-YXdVojGXp0"
 
 @app.route("/unifi-webhook", methods=["POST"])
 def unifi_webhook():
