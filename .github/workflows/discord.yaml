@@ -1,0 +1,9 @@
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    env:
+      MY_SECRET: ${{ secrets.DISCORD_WEBHOOK }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run Python Script
+        run: python script.py
