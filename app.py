@@ -6,6 +6,7 @@ app = Flask(__name__)
 
 # DISCORD_WEBHOOK_URL = os.getenv("DISCORD_WEBHOOK")  # Set this as a secret/env var
 
+
 @app.route("/unifi-webhook", methods=["POST"])
 def unifi_webhook():
     data = request.get_json()
